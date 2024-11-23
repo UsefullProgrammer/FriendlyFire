@@ -3,7 +3,7 @@ import { GetFakeMatches } from "./utils/fakematch.js";
 import axios from "axios";
 
 console.log("API used: " + config.api);
-
+const randomPause = Math.floor(Math.random() * 750) + 1000;
 const _playerName = "bio";
 const _ItCountryCode = "IT";
 const _AbleQueryGetMatchResult = true; //per non spammare query
@@ -53,6 +53,7 @@ async function GetPlayerRank(playerName) {
 async function GetPlayerMatches(playerName) {
   const parsedMatches = [];
   try {
+    await sleep(randomPause); // Pausa di 0,75 fino a 1,5 secondi
     const response = await axios.get(
       config.api +
         "replays?" +
